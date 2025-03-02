@@ -1,6 +1,27 @@
-@InboxService_HostAddress = http://localhost:5056
+@InboxService_HostAddress = https://localhost:7067
+@User_Endpoint = /api/Users/
 
-GET {{InboxService_HostAddress}}/weatherforecast/
+GET {{InboxService_HostAddress}}{{User_Endpoint}}
 Accept: application/json
 
 ###
+POST {{InboxService_HostAddress}}{{User_Endpoint}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "User1",
+    "email": "user1@email.com",
+    "doB": "2000-01-01T00:00:00.000Z"
+}
+###
+
+POST {{InboxService_HostAddress}}{{User_Endpoint}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "ErrorUser",
+    "email": "error.user@email.com",
+    "doB": "2000-01-01"
+}

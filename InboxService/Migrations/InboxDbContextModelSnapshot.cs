@@ -28,7 +28,7 @@ namespace InboxService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("Dob")
+                    b.Property<DateTime>("DoB")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")

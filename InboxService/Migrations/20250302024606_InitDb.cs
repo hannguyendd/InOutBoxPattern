@@ -18,7 +18,7 @@ namespace InboxService.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Dob = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    DoB = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {

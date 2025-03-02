@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InboxService.Migrations
 {
     [DbContext(typeof(InboxDbContext))]
-    [Migration("20250301112714_InitDb")]
+    [Migration("20250302024606_InitDb")]
     partial class InitDb
     {
         /// <inheritdoc />
@@ -31,7 +31,7 @@ namespace InboxService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("Dob")
+                    b.Property<DateTime>("DoB")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")

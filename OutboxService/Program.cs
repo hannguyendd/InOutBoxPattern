@@ -1,6 +1,8 @@
 using OutboxService.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using Shared.Middlewares;
+using OutboxService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +15,14 @@ builder.Services.AddControllers();
 builder.Services.AddCap(option =>
 {
     option.UseEntityFramework<OutboxDbContext>();
+
     option.UseKafka("localhost:9092");
+
+    option.UseDashboard();
 });
+
+builder.Services.AddTransient<PatientEventConsumer>();
+builder.Services.AddScoped<PatientService>();
 
 var app = builder.Build();
 
@@ -26,6 +34,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
 app.MapControllers();
 
 app.Run();
